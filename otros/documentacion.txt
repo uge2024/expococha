@@ -1,0 +1,17 @@
+#Para poder sacar un backup en postgresql dentro un host compartido se debe hacer lo siguiente:
+# el link consultado fue el siguiente https://www.a2hosting.com/kb/developer-corner/postgresql/postgresql-database-backups-using-cron-jobs
+1) debemos ingresar po linea de comando con el usuario que tenemos y estar en la raiz de su directorio
+    para mi ejemplo es el siguiente /home4/djinmueb
+2) ahora se debe crear un archivo .pgapss
+    >touch .pgpass
+3) abrimos el archivo
+    >nano .pgpass
+4) escribimos los siguientes datos el # es solo para ayuda el ejemplo es uno que hice los datos deben ser otros
+
+    #hostname:port:database:username:password
+    localhost:5432:djinmueb_pymes:djinmueb_pyme:Pymes2020
+
+Ahora podemos ejecutar pg_dump sin que nos pida la contraseña, ejemplo:
+    > pg_dump --username=djinmueb_pyme djinmueb_pymes > /home4/djinmueb/public_html/pymes/storage/app/public/uploads/backup_121212.sql
+
+
